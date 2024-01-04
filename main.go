@@ -4,12 +4,14 @@ import (
 	"fmt"
 	"github.com/getlantern/systray"
 	"log"
+	"main/dbspm"
 	"main/endpoints"
 	"main/tray"
 	"net/http"
 )
 
 func main() {
+	go dbspm.Deploy()
 	go handleRequests()
 	systray.Run(tray.OnReady, tray.OnExit)
 }
